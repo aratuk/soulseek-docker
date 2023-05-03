@@ -15,6 +15,10 @@ umask ${UMASK:-0000}
 
 touch /tmp/.Xauthority
 chown soulseek:soulseek /tmp/.Xauthority
+## Customization
+ip route del default
+ip route add default via "${HOSTCONT}"
+ip route add 192.168.1.0/24 via "${GATEWAY}"
 
 [ -n "$TZ" ] && [ -f "/usr/share/zoneinfo/$TZ" ] && ln -sf "/usr/share/zoneinfo/$TZ" /etc/localtime
 
